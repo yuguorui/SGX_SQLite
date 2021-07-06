@@ -216,12 +216,12 @@ Enclave/Enclave.o: Enclave/Enclave.cpp
 
 # Preprocess sqlite3
 Enclave/sqlite3.i: Enclave/sqlite3.c
-	$(CC) -I$(SGX_SDK)/include -DSQLITE_THREADSAFE=2 -DSQLITE_HOMEGROWN_RECURSIVE_MUTEX=1 -E $< -o $@
+	$(CC) -I$(SGX_SDK)/include -DSQLITE_THREADSAFE=1 -DSQLITE_HOMEGROWN_RECURSIVE_MUTEX=1 -E $< -o $@
 	@echo "CC-Preprocess  <=  $<"
 
 # Compile sqlite3
 Enclave/sqlite3.o: Enclave/sqlite3.i Enclave/sqlite3.c
-	$(CC) $(Enclave_C_Flags) -DSQLITE_THREADSAFE=2 -DSQLITE_HOMEGROWN_RECURSIVE_MUTEX=1 -c $< -o $@
+	$(CC) $(Enclave_C_Flags) -DSQLITE_THREADSAFE=1 -DSQLITE_HOMEGROWN_RECURSIVE_MUTEX=1 -c $< -o $@
 	@echo "CC  <=  $<"
 
 # Preprocess sqlite3
